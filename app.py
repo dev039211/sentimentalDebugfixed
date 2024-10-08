@@ -37,7 +37,7 @@ def sentiment_analysis(input):
     prediction = model.predict(user_sequences_matrix)
     return round(float(prediction[0][0]), 2)
 
-@app.route("/", methods=["GET", "POST"])
+'''@app.route("/", methods=["GET", "POST"])
 def index():
     sentiment = None
     if request.method == "POST":
@@ -50,6 +50,16 @@ def index():
         # Custom model sentiment analysis
         sentiment["custom model positive"] = sentiment_analysis(text)
 
+    return render_template('form.html', sentiment=sentiment, user_text=text)'''
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    sentiment = dict()
+    text = ""
+    if request.method == "POST":
+        text = request.form.get("user_text")
+        sentiment = analyzer.polarity_scores(text)
+        sentiment["custom model positive"] = sentiment_analysis(text)
     return render_template('form.html', sentiment=sentiment, user_text=text)
 
 if __name__ == "__main__":
