@@ -8,6 +8,8 @@ from flask import Flask, render_template, request
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 app = Flask(__name__)
+#missing part
+analyzer = SentimentIntensityAnalyzer()
 
 # Global variables for model and tokenizer
 model = None
