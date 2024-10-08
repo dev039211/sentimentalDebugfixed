@@ -38,21 +38,6 @@ def sentiment_analysis(input):
     prediction = model.predict(user_sequences_matrix)
     return round(float(prediction[0][0]), 2)
 
-'''@app.route("/", methods=["GET", "POST"])
-def index():
-    sentiment = None
-    if request.method == "POST":
-        text = request.form.get("user_text")
-
-        # VADER sentiment analysis
-        analyzer = SentimentIntensityAnalyzer()
-        sentiment = analyzer.polarity_scores(text)  # VADER results
-
-        # Custom model sentiment analysis
-        sentiment["custom model positive"] = sentiment_analysis(text)
-
-    return render_template('form.html', sentiment=sentiment, user_text=text)'''
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     sentiment = dict()
