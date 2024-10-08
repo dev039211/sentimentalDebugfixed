@@ -1,7 +1,8 @@
 import pickle
 import tensorflow as tf
-print(tf.__version__)
-from tensorflow.keras.models import load_model, save_model
+#print(tf.__version__)
+from tensorflow.keras.models import load_model
+#from tensorflow.keras.models import load_model, save_mod
 from tensorflow.keras.preprocessing import sequence
 
 from flask import Flask, render_template, request
