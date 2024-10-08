@@ -33,7 +33,7 @@ def sentiment_analysis(input):
     user_sequences = tokenizer.texts_to_sequences([input])
     user_sequences_matrix = sequence.pad_sequences(user_sequences, maxlen=1225)
     prediction = model.predict(user_sequences_matrix)
-    return round(float(prediction[0][0])*100, 2)
+    return round(float(prediction[0][0]), 2)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
