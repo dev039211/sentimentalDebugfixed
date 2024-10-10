@@ -9,19 +9,18 @@
     <body>
       <div class="container">
           <div class="text-center">
-              <img src="static/sentimentscope.png">
-          </div>
+<h1>sentimentScope</h1>
           <div class="row">
               <div class="col-lg-8 mx-auto">
                   <form method="POST">
                       <div class="form-group">
-                          <textarea class="form-control" name="user_text" rows="5">{% if sentiment %}{{user_text}}{% endif %}</textarea>
+                          <textarea class="form-control" name="user_text" rows="5"></textarea>
                       </div>
                       <input type="submit" value="Analyze Text" class="btn btn-primary">
                   </form>
               </div>
           </div>
-          {% if sentiment %}
+          {% if sentiment %}    
           <div class="row">
             <div class="col-lg-8 mx-auto mt-5">
               <div class="text-center">
@@ -37,9 +36,9 @@
               </div>
             </div>
         </div>
-        {% endif %}
+    {% endif %}
     </div>
-    {% if sentiment %}
+    {% if sentiment %}     
     <script>
         var data = [
         {
@@ -89,6 +88,5 @@
       Plotly.newPlot('barChart', data2, {'width':500});
       Plotly.newPlot('gauge', data, layout);
     </script>
-    {% endif %}
     </body>
 </html>
