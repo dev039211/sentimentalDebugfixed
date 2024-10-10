@@ -1,4 +1,6 @@
 import pickle
+#import tensorflow as tf
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import sequence
 
@@ -29,7 +31,7 @@ def sentiment_analysis(input):
     user_sequences = tokenizer.texts_to_sequences([input])
     user_sequences_matrix = sequence.pad_sequences(user_sequences, maxlen=1225)
     prediction = model.predict(user_sequences_matrix)
-    return round(float(prediction[0][0]),2)
+    return round(float(prediction[0][0]) * 100, 2)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -37,8 +39,7 @@ def index():
     text = ""
     if request.method == "POST":
         text = request.form.get("user_text")
-        sentiment = analyzer.polarity_scores(text) # VADER results
-        # create a new key in the dictionary to store the custom model sentiment analysis results
+        sentiment = analyzer.polarity_scores(text)
         sentiment["custom model positive"] = sentiment_analysis(text)
     return render_template('form.html', sentiment=sentiment, user_text=text)
 
